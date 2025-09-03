@@ -9,7 +9,7 @@ fn say_hello(name: &str) -> PyResult<String> {
 
 /// This module is a python extension implemented in Rust.
 #[pymodule]
-fn hello_rust_py(_py: Python, m: &PyModule) -> PyResult<()> {
+fn hello_rust_py(_py: Python, m: &Bound<'_, PyModule>) -> PyResult<()> {
     m.add_function(wrap_pyfunction!(say_hello, m)?)?;
     Ok(())
 }
